@@ -5,7 +5,9 @@ services:
     container_name: local-mongodb
     environment:
       MONGODB_INITDB_ROOT_USERNAME: $DB_USERNAME
-      MONGODB_INITDB_ROOT_PASSWORD: $DB_PASSWORD    
+      MONGODB_INITDB_ROOT_PASSWORD: $DB_PASSWORD  
+    ports:
+      - 8080:27017  
     volumes:
       - type: bind
         source: ./database
@@ -18,7 +20,7 @@ services:
     environment: 
       ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
       ME_CONFIG_MONGODB_SERVER: local-mongodb  
-      ME_CONFIG_MONGODB_ENABLE_ADMIN: true     
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
       ME_CONFIG_MONGODB_ADMINUSERNAME: $DB_USERNAME
       ME_CONFIG_MONGODB_ADMINPASSWORD: $DB_PASSWORD
       ME_CONFIG_BASICAUTH_USERNAME: $MONGOUI_USERNAME
