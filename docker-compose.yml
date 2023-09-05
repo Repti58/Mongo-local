@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server:7.0.0-ubi8
+    container_name: local-mongodb
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: $DB_USERNAME
+      MONGODB_INITDB_ROOT_PASSWORD: $DB_PASSWORD    
+    volumes:
+      - type: bind
+        source: ./database
+        target: /data/db
+
+  mongoUI:
+    image: mongo-express:1.0.0-alpha.4
+    container_name: mongoUI
+    restart: always
+    environment: 
+      ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+      ME_CONFIG_MONGODB_SERVER: local-mongodb  
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: true     
+      ME_CONFIG_MONGODB_ADMINUSERNAME: $DB_USERNAME
+      ME_CONFIG_MONGODB_ADMINPASSWORD: $DB_PASSWORD
+      ME_CONFIG_BASICAUTH_USERNAME: $MONGOUI_USERNAME
+      ME_CONFIG_BASICAUTH_PASSWORD: $MONGOUI_PASSWORD
+
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodb
+
