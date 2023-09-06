@@ -21,3 +21,6 @@ Access db from any app outside docker container:
 ```
 mongodb://<dbusername>:<dbpassword>@localhost:8080
 ```
+There is a problem with admin rights. Discussed here:
+
+https://github.com/mongo-express/mongo-express/issues/809
