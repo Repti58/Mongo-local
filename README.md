@@ -9,15 +9,13 @@ MONGOUI_PASSWORD="<uipassword>"
 ```
 docker compose --env-file=.env up --build
 ```
-Access DB by UI:
+Access to DB by UI: http://localhost:8081
 
-http://localhost:8081
-
-Access to db from terminal:
+Access to DB from terminal:
 ```
 docker exec -it local-mongodb mongosh -u <dbusername> -p <dbpassword> --authenticationDatabase admin
 ```
-Access db from any app outside docker container:
+Access to DB from any app outside docker container:
 ```
 mongodb://<dbusername>:<dbpassword>@localhost:8080
 ```
