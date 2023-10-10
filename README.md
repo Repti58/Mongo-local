@@ -6,6 +6,7 @@ DB_PASSWORD="<dbpassword>"
 MONGOUI_USERNAME="<uiusername>"
 MONGOUI_PASSWORD="<uipassword>"
 ```
+```The database and UI will be created using these credentials```<br><br>
 ```
 docker compose --env-file=.env up --build
 ```
